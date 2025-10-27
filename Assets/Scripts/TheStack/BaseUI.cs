@@ -10,6 +10,7 @@ public abstract class BaseUI : MonoBehaviour
     }
 
     protected abstract UIState GetUIState();
+
     public void SetActive(UIState state)
     {
         gameObject.SetActive(GetUIState() == state);
