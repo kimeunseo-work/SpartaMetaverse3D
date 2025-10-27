@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : BaseController
+public class PlayerController_Idle : BaseController
 {
     private Camera cam;
 

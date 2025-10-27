@@ -1,7 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private PlayerController_Idle controller_Idle;
     /// <summary>
     /// 미니 게임 진입시 플레이어 위치 이동시킬 임시 위치
     /// </summary>
@@ -11,6 +13,15 @@ public class Player : MonoBehaviour
     /// 현재 상호작용 중인 NPC
     /// </summary>
     private BaseNPC currentTarget;
+
+    private void Awake()
+    {
+        controller_Idle = GetComponent<PlayerController_Idle>();
+    }
+    private void Start()
+    {
+        controller_Idle.enabled = true;
+    }
 
     private void OnEnable()
     {
@@ -57,6 +68,10 @@ public class Player : MonoBehaviour
     /// </summary>
     private void EnterMiniGame()
     {
+        // controller
+        controller_Idle.enabled = false;
+
+        // position
         originPos = transform.position;
         transform.position = tempLobby.position;
     }
@@ -65,6 +80,10 @@ public class Player : MonoBehaviour
     /// </summary>
     private void ExitMiniGame()
     {
+        // controller
+        controller_Idle.enabled = true;
+
+        // position
         transform.position = originPos;
         originPos = Vector3.zero;
     }
