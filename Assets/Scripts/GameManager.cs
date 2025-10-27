@@ -4,25 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     /* Singleton */
-    private static GameManager instance;
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<GameManager>();
-
-                if (instance == null)
-                {
-                    GameObject obj = new GameObject("GameManager");
-                    instance = obj.AddComponent<GameManager>();
-                    DontDestroyOnLoad(obj);
-                }
-            }
-            return instance;
-        }
-    }
+    public static GameManager Instance { get; private set; }
 
     /*GameState*/
     public enum GameState { Idle, MiniGame }
@@ -34,15 +16,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void ChangeGameState(GameState state)
