@@ -3,7 +3,6 @@ using UnityEngine;
 public class BaseNPC : MonoBehaviour
 {
     [SerializeField] protected GameObject ui;
-    [SerializeField] private Transform lobby;
     private SpriteRenderer keySprite;
 
     protected virtual void Awake()
