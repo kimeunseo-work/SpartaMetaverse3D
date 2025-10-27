@@ -56,8 +56,8 @@ public class TheStack : MonoBehaviour
             return;
         }
 
-        bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
-        bestCombo = PlayerPrefs.GetInt(BestComboKey, 0);
+        bestScore = DataManager.Instance.BestScore;
+        bestCombo = DataManager.Instance.BestCombo;
 
         prevColor = GetRandomColor();
         nextColor = GetRandomColor();
@@ -153,8 +153,8 @@ public class TheStack : MonoBehaviour
             bestScore = stackCount;
             bestCombo = maxCombo;
 
-            PlayerPrefs.SetInt(BestScoreKey, bestScore);
-            PlayerPrefs.SetInt(BestComboKey, bestCombo);
+            DataManager.Instance.BestScore = bestScore;
+            DataManager.Instance.BestCombo = bestCombo;
         }
     }
     private void ComboCheck()
