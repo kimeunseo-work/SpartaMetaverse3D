@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     /*Actions*/
     public Action OnMinigameEnterd { get; set; }
+    public Action OnMinigameExited { get; set; }
 
     private void Awake()
     {
@@ -47,17 +48,18 @@ public class GameManager : MonoBehaviour
     public void ChangeGameState(GameState state)
     {
         if (currentState == state) return;
-        
+        // 중복 할당 방지 위한 할당
         currentState = state;
+
 
         if (currentState == GameState.Idle)
         {
-
+            OnMinigameExited?.Invoke();
         }
         else if(currentState == GameState.MiniGame)
         {
-            // 플레이어 이동
-            // 카메라 전환
+            // 플레이어 - 플레이어 위치 조정
+            // 더 스택 - 카메라 조정, 오브젝트 활성화
             OnMinigameEnterd?.Invoke();
         }
     }

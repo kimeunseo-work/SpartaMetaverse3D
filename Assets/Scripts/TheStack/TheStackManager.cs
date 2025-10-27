@@ -14,7 +14,14 @@ public class TheStackManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.OnMinigameEnterd += EnterGame;
+        GameManager.Instance.OnMinigameExited += ExitGame;
     }
+    private void OnDisable()
+    {
+        GameManager.Instance.OnMinigameEnterd -= EnterGame;
+        GameManager.Instance.OnMinigameExited -= ExitGame;
+    }
+
     private void Start()
     {
         stack.transform.parent.gameObject.SetActive(false);
@@ -22,12 +29,13 @@ public class TheStackManager : MonoBehaviour
 
     private void EnterGame()
     {
-        CameraManager.Instance.ChangeCam(cam, false, new Rect(0.342f, 0f, 0.316f, 1.0f), true); 
+        CameraManager.Instance.ChangeCam(false, cam, false, true, new Rect(0.342f, 0f, 0.316f, 1.0f)); 
         stack.transform.parent.gameObject.SetActive(true);
     }
 
-    private void OnDisable()
+    private void ExitGame()
     {
-        GameManager.Instance.OnMinigameEnterd -= EnterGame;
+        CameraManager.Instance.ChangeCam();
+        stack.transform.parent.gameObject.SetActive(false);
     }
 }
