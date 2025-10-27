@@ -4,6 +4,7 @@ public class DataManager : MonoBehaviour
 {
     private const string KEY_SCORE = "Score";
     private const string KEY_COMBO = "Combo";
+
     public int BestScore
     {
         get => PlayerPrefs.GetInt(KEY_SCORE, 0);
