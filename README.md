@@ -11,13 +11,3 @@
 	* `CinemachinePixelPerfect`
 *  **Collision** : 카메라 이동 제한 콜라이더 (PolygonCollider2D)
 *  **Trigger** : 카메라 전환 트리거 (EdgeCollider2D)
-
-## Order In Layer
-* UI (1000 ~ )
-* Player (500 ~ )
-* NPC (100 ~ )
-* Grid
-  *	Background 0
-  *	Floor 10
-  *	ForeFloor 20
-  *	Collision 0

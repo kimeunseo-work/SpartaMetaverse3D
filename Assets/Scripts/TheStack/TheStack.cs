@@ -88,7 +88,7 @@ public class TheStack : MonoBehaviour
             }
         }
         MoveBlock();
-        transform.position = Vector3.Lerp(transform.position, targetPos, stackSpeed * Time.deltaTime);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, stackSpeed * Time.deltaTime);
     }
 
     public void ReStart()
@@ -339,7 +339,6 @@ public class TheStack : MonoBehaviour
         go.AddComponent<Rigidbody>();
         go.name = "Rubble";
     }
-
     private void ColorChange(GameObject go)
     {
         Color applyColor = Color.Lerp(prevColor, nextColor, (stackCount % 11) / 10f);

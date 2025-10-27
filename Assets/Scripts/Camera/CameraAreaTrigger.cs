@@ -1,21 +1,15 @@
+using Cinemachine;
 using UnityEngine;
 
 public class CameraAreaTrigger : MonoBehaviour
 {
-    private BoxCollider2D box;
-    private FollowCamera mainCam;
-
-    private void Awake()
-    {
-        box = GetComponentInChildren<BoxCollider2D>();
-        mainCam = Camera.main.GetComponent<FollowCamera>();
-    }
+    [SerializeField] private CinemachineVirtualCamera cam;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            mainCam.SetDesiredBounds(box);
+            CameraManager.Instance.ChangeCam(cam);
         }
     }
 }
