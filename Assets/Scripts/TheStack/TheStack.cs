@@ -167,11 +167,11 @@ public class TheStack : MonoBehaviour
         if ((comboCount % 5) == 0)
         {
             Debug.Log("5Combo Success!");
-            stackBounds += new Vector3(0.5f, 0.5f);
+            stackBounds += new Vector3(0.5f, 0, 0.5f);
             stackBounds.x =
                 (stackBounds.x > boundSize) ? boundSize : stackBounds.x;
-            stackBounds.y =
-                (stackBounds.y > boundSize) ? boundSize : stackBounds.y;
+            stackBounds.z =
+                (stackBounds.z > boundSize) ? boundSize : stackBounds.z;
         }
     }
 
